@@ -135,7 +135,7 @@ export function CommunityForum() {
         
         <div className="pt-2 border-t">
           <p className="text-xs text-muted-foreground text-center">
-            All posts are anonymous and moderated by AI for safety 🛡️
+            Example posts shown for preview · share only what feels comfortable
           </p>
         </div>
       </CardContent>

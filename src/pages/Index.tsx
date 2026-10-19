@@ -1,303 +1,72 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  Brain, 
-  Heart, 
-  Users, 
-  Shield, 
-  Zap, 
-  TrendingUp,
-  ArrowRight,
-  CheckCircle
-} from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Brain, Check, Heart, LockKeyhole, Menu, MessageCircle, ShieldCheck, Sparkles, Users, X } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import Dashboard from "./Dashboard";
 
 const Index = () => {
   const [showDashboard, setShowDashboard] = useState(false);
-
-  if (showDashboard) {
-    return <Dashboard />;
-  }
+  const [menuOpen, setMenuOpen] = useState(false);
+  if (showDashboard) return <Dashboard />;
 
   const features = [
-    {
-      icon: Brain,
-      title: "AI-Powered Support",
-      description: "Get personalized guidance through sentiment-aware chatbot interactions",
-      color: "text-primary"
-    },
-    {
-      icon: Heart,
-      title: "Daily Mood Tracking",
-      description: "Log your emotions and visualize patterns with gamified streaks",
-      color: "text-destructive"
-    },
-    {
-      icon: Users,
-      title: "Anonymous Community",
-      description: "Connect with fellow students in a safe, moderated environment",
-      color: "text-accent"
-    },
-    {
-      icon: Shield,
-      title: "Privacy First",
-      description: "End-to-end encryption ensures your mental health data stays private",
-      color: "text-secondary"
-    }
-  ];
-
-  const benefits = [
-    "24/7 AI companion for emotional support",
-    "Crisis detection with immediate helpline access", 
-    "Predictive analytics for mental health trends",
-    "Gamified wellness tracking with achievements",
-    "Anonymous peer support community",
-    "Evidence-based coping strategies"
+    { number: "01", icon: Heart, title: "Check in with yourself", text: "Name what you’re feeling. Notice your patterns. Build a little more self-understanding, one day at a time.", color: "sage" },
+    { number: "02", icon: MessageCircle, title: "Talk it through", text: "A gentle space to put your thoughts into words and explore what might help next.", color: "peach" },
+    { number: "03", icon: Users, title: "Feel less alone", text: "Hear from a peer community navigating the same wonderfully complicated season of life.", color: "lilac" },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold">Nirvana</h1>
-                <p className="text-xs text-muted-foreground">Digital Mental Health</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Button variant="ghost">Login</Button>
-              <Button variant="hero" onClick={() => setShowDashboard(true)}>
-                Try Demo
-              </Button>
-            </div>
-          </div>
+    <div className="landing-page min-h-screen bg-background text-foreground">
+      <nav className="landing-nav sticky top-0 z-40 border-b border-black/[.06] bg-[#fbfaf7]/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-5 sm:px-8">
+          <a href="#top" className="flex items-center gap-3" aria-label="Nirvana home"><span className="brand-mark"><Brain size={19} strokeWidth={1.8} /></span><span className="leading-tight"><span className="block text-[18px] font-semibold tracking-[-.04em]">nirvana<span className="text-primary">.</span></span><span className="block text-[10px] tracking-[.11em] text-muted-foreground">STUDENT WELLBEING</span></span></a>
+          <div className="hidden items-center gap-9 md:flex"><a href="#approach" className="landing-link">Our approach</a><a href="#tools" className="landing-link">What’s inside</a><a href="#community" className="landing-link">Community</a></div>
+          <div className="hidden items-center gap-3 md:flex"><button className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setShowDashboard(true)}>Log in</button><Button onClick={() => setShowDashboard(true)} className="h-11 rounded-full px-5">Explore the demo <ArrowUpRight size={16} className="ml-1" /></Button></div>
+          <button className="rounded-full p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close navigation" : "Open navigation"}>{menuOpen ? <X size={22} /> : <Menu size={22} />}</button>
         </div>
+        {menuOpen && <div className="space-y-1 border-t px-5 py-4 md:hidden"><a href="#approach" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>Our approach</a><a href="#tools" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>What’s inside</a><a href="#community" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>Community</a><Button className="mt-2 w-full rounded-full" onClick={() => setShowDashboard(true)}>Explore the demo <ArrowRight size={16} /></Button></div>}
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero opacity-90"></div>
-        <div className="relative container mx-auto px-4 py-20 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left space-y-6 animate-fade-in">
-              <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                <Zap className="w-3 h-3 mr-1" />
-                Mental Health Innovation for Students
-              </Badge>
-              
-              <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
-                Your Digital
-                <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-                  Mental Health
-                </span>
-                <span className="block">Companion</span>
-              </h1>
-              
-              <p className="text-lg text-white/90 max-w-md mx-auto lg:mx-0">
-                AI-powered support, mood tracking, and peer community designed specifically for student mental wellness.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  size="xl" 
-                  className="bg-white text-primary hover:bg-white/90 hover:shadow-floating transition-all duration-300"
-                  onClick={() => setShowDashboard(true)}
-                >
-                  Start Your Wellness Journey
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="xl"
-                  className="border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm"
-                >
-                  Learn More
-                </Button>
-              </div>
+      <main id="top">
+        <section className="landing-hero relative overflow-hidden">
+          <div className="hero-orbit hero-orbit-one" /><div className="hero-orbit hero-orbit-two" />
+          <div className="relative mx-auto grid max-w-[1280px] items-center gap-12 px-5 pb-20 pt-14 sm:px-8 sm:pb-24 sm:pt-20 lg:grid-cols-[.92fr_1.08fr] lg:gap-16 lg:py-24">
+            <div className="relative z-10 max-w-[590px]">
+              <div className="eyebrow"><span className="eyebrow-dot" /> A softer place to land</div>
+              <h1 className="hero-title mt-7">You don’t have to<br className="hidden sm:block" /> have it <span className="title-accent">figured out.</span></h1>
+              <p className="mt-6 max-w-[480px] text-base leading-7 text-[#53625b] sm:text-lg sm:leading-8">College can ask a lot of you. Nirvana gives you a private-feeling space to check in, find perspective, and feel a little more supported.</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button onClick={() => setShowDashboard(true)} className="h-12 rounded-full px-6 text-sm shadow-[0_8px_24px_rgba(44,92,66,.2)]">Take a look around <ArrowRight size={17} className="ml-2" /></Button><a href="#approach" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#dfe5dc] bg-white/60 px-6 text-sm font-medium transition hover:bg-white">See how it works <ArrowDown size={15} /></a></div>
+              <div className="mt-9 flex items-center gap-2 text-xs text-[#68756c]"><LockKeyhole size={14} className="text-primary" /> A demo space for reflection and support</div>
             </div>
-            
-            <div className="relative animate-slide-up">
-              <div className="relative rounded-2xl overflow-hidden shadow-floating">
-                <img 
-                  src={heroImage}
-                  alt="Digital mental health support illustration" 
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-              </div>
+            <div className="hero-art-wrap relative mx-auto w-full max-w-[640px] lg:mr-0">
+              <div className="hero-art-frame"><img src={heroImage} alt="A person taking a quiet moment to breathe" className="hero-art-image" /><div className="hero-art-wash" /><div className="hero-art-caption"><span className="caption-icon"><Sparkles size={15} /></span><span><b>A moment for yourself</b><small>There’s no perfect way to begin.</small></span></div></div>
+              <div className="floating-note note-top"><span className="note-icon note-icon-heart"><Heart size={16} fill="currentColor" /></span><span><b>Start where you are</b><small>Every feeling is welcome</small></span></div>
+              <div className="floating-note note-bottom"><span className="note-icon note-icon-check"><Check size={16} /></span><span><b>Your pace. Your space.</b><small>Small steps count, too.</small></span></div>
+              <div className="hero-sparkle sparkle-a">✳</div><div className="hero-sparkle sparkle-b">✳</div>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="hero-bottom-rule"><span>SUPPORT FOR THE IN-BETWEEN MOMENTS</span><span className="rule-line" /><span>MADE WITH STUDENTS IN MIND</span></div>
+        </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Comprehensive Mental Health Support
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Built for students, by understanding the unique challenges of academic life and mental wellness.
-            </p>
+        <section id="approach" className="py-20 sm:py-28">
+          <div className="mx-auto grid max-w-[1280px] gap-12 px-5 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
+            <div><div className="section-kicker">A little more room to breathe</div><h2 className="section-title mt-4">Support that meets<br />you <span className="serif-accent">where you are.</span></h2><p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground sm:text-base">Some days need a check-in. Some days need a conversation. Some days, it just helps to know you’re not the only one.</p><button onClick={() => setShowDashboard(true)} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3">Explore your space <ArrowRight size={16} /></button></div>
+            <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">{features.map(({ number, icon: Icon, title, text, color }) => <article key={number} className={`feature-tile feature-${color}`}><div className="flex items-start justify-between"><span className="feature-number">{number}</span><span className="feature-icon"><Icon size={20} strokeWidth={1.7} /></span></div><h3 className="mt-10 text-[17px] font-semibold tracking-[-.025em]">{title}</h3><p className="mt-2 text-[13px] leading-6 text-[#647069]">{text}</p></article>)}</div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="shadow-soft border-0 bg-gradient-card hover:shadow-elevated transition-all duration-300 group"
-                >
-                  <CardHeader className="text-center pb-2">
-                    <div className={`w-12 h-12 mx-auto rounded-lg bg-gradient-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className={`w-6 h-6 text-primary-foreground`} />
-                    </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Benefits Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold">
-                Everything You Need for
-                <span className="block text-primary">Mental Wellness</span>
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Nirvana provides a complete ecosystem of tools, support, and insights designed to help students thrive academically and emotionally.
-              </p>
-              
-              <div className="space-y-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3 animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <Button 
-                variant="hero" 
-                size="lg"
-                onClick={() => setShowDashboard(true)}
-                className="mt-6"
-              >
-                Experience Nirvana
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-            
-            <div className="relative">
-              <Card className="shadow-floating border-0 bg-gradient-card p-6">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Mood Improvement</h3>
-                      <p className="text-sm text-muted-foreground">87% positive trend</p>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-muted/50 rounded-lg p-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Weekly Progress</span>
-                      <Badge className="bg-accent/10 text-accent">+23%</Badge>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div className="bg-gradient-primary h-2 rounded-full animate-progress-fill" style={{"--progress-width": "87%"} as any}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="text-xs text-muted-foreground pt-2 border-t">
-                    Real data from student beta testers
-                  </div>
-                </div>
-              </Card>
+        <section id="tools" className="tools-section py-20 sm:py-28">
+          <div className="mx-auto max-w-[1280px] px-5 sm:px-8"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><div className="section-kicker">Inside your space</div><h2 className="section-title mt-4">A few good things,<br /><span className="serif-accent">all in one place.</span></h2></div><p className="max-w-sm text-sm leading-6 text-muted-foreground">Thoughtful tools for the days that feel easy, and the days that don’t.</p></div>
+            <div className="tool-grid mt-10"><button onClick={() => setShowDashboard(true)} className="tool-card tool-card-large"><span className="tool-index">01 / REFLECT</span><span className="tool-illustration mood-illustration"><span className="mood-sun" /><span className="mood-label">How are you,<br />really?</span><span className="mood-pills"><i /><i /><i /><i /></span></span><span className="tool-card-bottom"><span><b>Daily mood check-ins</b><small>Notice how you’re feeling, without judgment.</small></span><span className="tool-arrow"><ArrowUpRight size={18} /></span></span></button>
+              <button onClick={() => setShowDashboard(true)} className="tool-card"><span className="tool-index">02 / TALK</span><span className="tool-illustration chat-illustration"><span className="chat-bubble chat-bubble-a">I’ve got a lot on my mind.</span><span className="chat-bubble chat-bubble-b">Want to unpack it together?</span><span className="chat-spark">✳</span></span><span className="tool-card-bottom"><span><b>A place to talk</b><small>Put your thoughts into words.</small></span><span className="tool-arrow"><ArrowUpRight size={18} /></span></span></button>
+              <button id="community" onClick={() => setShowDashboard(true)} className="tool-card"><span className="tool-index">03 / CONNECT</span><span className="tool-illustration community-illustration"><span className="community-orb orb-1">J</span><span className="community-orb orb-2">M</span><span className="community-orb orb-3">A</span><span className="community-thread">You’re not alone here.</span></span><span className="tool-card-bottom"><span><b>Peer community</b><small>Find connection in shared stories.</small></span><span className="tool-arrow"><ArrowUpRight size={18} /></span></span></button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Ready to Transform Your Mental Health Journey?
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of students who have found support, community, and growth through Nirvana.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="xl" 
-              className="bg-white text-primary hover:bg-white/90 hover:shadow-floating transition-all duration-300"
-              onClick={() => setShowDashboard(true)}
-            >
-              Start Free Demo
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="xl"
-              className="border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm"
-            >
-              Contact Support
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Nirvana</h3>
-                <p className="text-xs text-background/70">Digital Mental Health Support</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-primary transition-colors">Crisis Resources</a>
-            </div>
-          </div>
-          
-          <div className="border-t border-background/20 mt-8 pt-6 text-center text-xs text-background/70">
-            <p>© 2024 Nirvana. Built for student mental wellness. Not a substitute for professional medical advice.</p>
-          </div>
-        </div>
-      </footer>
+        <section className="promise-section px-5 py-16 sm:px-8 sm:py-24"><div className="promise-inner mx-auto max-w-[1120px]"><div className="promise-stamp"><ShieldCheck size={28} strokeWidth={1.5} /></div><div className="section-kicker text-[#c8e1c5]">Thoughtful by design</div><h2 className="mt-4 max-w-[700px] text-3xl font-medium leading-tight tracking-[-.04em] text-white sm:text-5xl">Your wellbeing isn’t a productivity project.</h2><p className="mt-5 max-w-[570px] text-sm leading-7 text-white/65 sm:text-base">Nirvana is a gentle companion for reflection and peer connection. It isn’t a diagnosis or a substitute for care from a qualified professional.</p><Button onClick={() => setShowDashboard(true)} className="mt-8 h-12 rounded-full bg-[#d9edca] px-6 text-[#213d2b] hover:bg-white">Step inside <ArrowRight size={16} className="ml-2" /></Button><div className="promise-decoration">n.</div></div></section>
+      </main>
+      <footer className="landing-footer"><div className="mx-auto flex max-w-[1280px] flex-col gap-5 px-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8"><a href="#top" className="flex items-center gap-2 text-sm font-semibold tracking-tight"><span className="brand-mark brand-mark-small"><Brain size={15} /></span>nirvana<span className="text-primary">.</span></a><p className="text-xs text-muted-foreground">A student wellbeing prototype · For reflection and peer support</p><a href="#top" className="text-xs text-muted-foreground hover:text-primary">Back to top ↑</a></div></footer>
     </div>
   );
 };

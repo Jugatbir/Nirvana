@@ -16,7 +16,7 @@ interface Message {
 const initialMessages: Message[] = [
   {
     id: "1",
-    content: "Hi there! I'm your AI companion here to support you. How are you feeling today?",
+    content: "Welcome. This is a small space to pause and put your thoughts into words. What feels most present for you today?",
     sender: "bot",
     timestamp: new Date(),
     mood: "supportive"
@@ -111,7 +111,7 @@ export function ChatbotInterface() {
       <CardHeader className="pb-3">
         <CardTitle className="text-lg font-semibold flex items-center gap-2">
           <Bot className="w-5 h-5 text-primary" />
-          AI Support Chat
+          Reflection chat <span className="ml-1 rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">DEMO</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col gap-4 min-h-0">

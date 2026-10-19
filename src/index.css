@@ -2,149 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Nirvana Mental Health App Design System - Calming, therapeutic colors */
-
 @layer base {
   :root {
-    /* Base colors - soft, calming palette */
-    --background: 210 40% 98%;
-    --foreground: 215 25% 27%;
-
-    /* Card colors - clean and elevated */
+    --background: 150 18% 98%;
+    --foreground: 158 22% 16%;
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
-
-    /* Popover colors */
+    --card-foreground: 158 22% 16%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
-
-    /* Primary - Calming teal/blue for trust and serenity */
-    --primary: 194 76% 56%;
+    --popover-foreground: 158 22% 16%;
+    --primary: 153 33% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 194 40% 85%;
-
-    /* Secondary - Soft purple for creativity and calm */
-    --secondary: 264 35% 70%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-soft: 264 20% 90%;
-
-    /* Muted colors - very subtle */
-    --muted: 210 30% 93%;
-    --muted-foreground: 215 16% 46%;
-
-    /* Accent - Warm green for growth and positivity */
-    --accent: 142 52% 60%;
+    --primary-soft: 150 28% 90%;
+    --secondary: 36 38% 91%;
+    --secondary-foreground: 158 22% 20%;
+    --secondary-soft: 36 38% 95%;
+    --muted: 150 15% 94%;
+    --muted-foreground: 158 9% 46%;
+    --accent: 153 30% 46%;
     --accent-foreground: 0 0% 100%;
-    --accent-soft: 142 30% 85%;
-
-    /* Destructive - Soft red for alerts */
-    --destructive: 350 70% 60%;
+    --accent-soft: 150 28% 90%;
+    --destructive: 2 58% 52%;
     --destructive-foreground: 0 0% 100%;
-
-    /* Warning - Soft orange */
-    --warning: 35 80% 65%;
+    --warning: 34 76% 57%;
     --warning-foreground: 0 0% 100%;
-
-    /* Border and input */
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 194 76% 56%;
-
-    /* Design system specific tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(194 76% 56%), hsl(194 76% 68%));
-    --gradient-secondary: linear-gradient(135deg, hsl(264 35% 70%), hsl(264 35% 80%));
-    --gradient-hero: linear-gradient(135deg, hsl(194 76% 56%), hsl(264 35% 70%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 30% 98%));
-    
-    /* Shadows for depth */
-    --shadow-soft: 0 4px 20px -2px hsl(194 76% 56% / 0.1);
-    --shadow-elevated: 0 8px 30px -4px hsl(194 76% 56% / 0.15);
-    --shadow-floating: 0 12px 40px -8px hsl(194 76% 56% / 0.2);
-
-    /* Animation tokens */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    --radius: 1rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 150 13% 88%;
+    --input: 150 13% 88%;
+    --ring: 153 33% 35%;
+    --gradient-primary: linear-gradient(135deg, hsl(153 33% 35%), hsl(153 30% 48%));
+    --gradient-secondary: linear-gradient(135deg, hsl(36 38% 91%), hsl(36 38% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(153 33% 35%), hsl(153 30% 48%));
+    --gradient-card: linear-gradient(145deg, #fff, #fbfcfb);
+    --shadow-soft: 0 4px 20px -2px hsl(153 30% 30% / .08);
+    --shadow-elevated: 0 8px 30px -4px hsl(153 30% 30% / .12);
+    --shadow-floating: 0 16px 48px -10px hsl(153 30% 30% / .17);
+    --transition-smooth: all .25s cubic-bezier(.4, 0, .2, 1);
+    --transition-bounce: all .35s cubic-bezier(.34, 1.56, .64, 1);
+    --radius: .85rem;
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 158 22% 16%;
+    --sidebar-primary: 153 33% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 15% 94%;
+    --sidebar-accent-foreground: 158 22% 16%;
+    --sidebar-border: 150 13% 88%;
+    --sidebar-ring: 153 33% 35%;
   }
 
-  .dark {
-    --background: 215 25% 27%;
-    --foreground: 210 40% 98%;
-
-    --card: 215 25% 27%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 215 25% 27%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 194 76% 68%;
-    --primary-foreground: 215 25% 27%;
-    --primary-soft: 194 40% 25%;
-
-    --secondary: 264 35% 60%;
-    --secondary-foreground: 210 40% 98%;
-    --secondary-soft: 264 20% 25%;
-
-    --muted: 215 25% 35%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 142 52% 50%;
-    --accent-foreground: 215 25% 27%;
-    --accent-soft: 142 30% 25%;
-
-    --destructive: 350 70% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --warning: 35 80% 55%;
-    --warning-foreground: 215 25% 27%;
-
-    --border: 215 25% 35%;
-    --input: 215 25% 35%;
-    --ring: 194 76% 68%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(194 76% 68%), hsl(194 76% 80%));
-    --gradient-secondary: linear-gradient(135deg, hsl(264 35% 60%), hsl(264 35% 75%));
-    --gradient-hero: linear-gradient(135deg, hsl(194 76% 68%), hsl(264 35% 60%));
-    --gradient-card: linear-gradient(145deg, hsl(215 25% 27%), hsl(215 25% 30%));
-    
-    --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
-    --shadow-elevated: 0 8px 30px -4px hsl(0 0% 0% / 0.4);
-    --shadow-floating: 0 12px 40px -8px hsl(0 0% 0% / 0.5);
-
-    --sidebar-background: 215 25% 22%;
-    --sidebar-foreground: 210 30% 90%;
-    --sidebar-primary: 194 76% 68%;
-    --sidebar-primary-foreground: 215 25% 27%;
-    --sidebar-accent: 215 25% 30%;
-    --sidebar-accent-foreground: 210 30% 90%;
-    --sidebar-border: 215 25% 30%;
-    --sidebar-ring: 194 76% 68%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
   }
 }
